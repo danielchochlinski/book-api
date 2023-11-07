@@ -1,5 +1,11 @@
+import BooksYouRead from "./components/BooksYouRead/BooksYouRead";
+
 const IndexPage = () => {
-  return <div>hello</div>;
+  return (
+    <>
+      <BooksYouRead />
+    </>
+  );
 };
 
 export default IndexPage;
