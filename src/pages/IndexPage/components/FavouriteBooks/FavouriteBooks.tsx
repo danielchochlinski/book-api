@@ -1,4 +1,3 @@
-import Book from "../../../../components/Book/Book";
 import s from "./styles.module.scss";
 
 const FavouriteBooks = () => {

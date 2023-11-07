@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SuggestionList from "./components/SuggestionList/SuggestionList";
 import { bookCategories } from "./helper";
-import CategoryList from "../../types/types";
 import FavouriteBooks from "./components/FavouriteBooks/FavouriteBooks";
 const IndexPage = () => {
   const getRandomCategory = (usedCategories: any[]) => {
