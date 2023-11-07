@@ -1,7 +1,8 @@
 .container {
+  position: fixed;
   display: flex;
+  width: calc(100% - 6vw);
   align-items: center;
-  padding: 12px;
   gap: 2rem;
 
   .input {
