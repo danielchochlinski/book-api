@@ -1,9 +1,13 @@
-@import url("../../index.scss"); 
+@import url("../../index.scss");
 
 .container {
-    width: 95vw;
-    height: 95vh;
-    border: 1px solid red;
-    border-radius: 5px; 
-    max-width: 1440px;
+  width: 95vw;
+  height: 95vh;
+  border: 2px solid black;
+  border-radius: 5px;
+  max-width: 1440px;
+  max-height: 85vh;
+  background-color: #f6f5f1;
+  padding: 12px;
+  overflow: scroll;
 }
