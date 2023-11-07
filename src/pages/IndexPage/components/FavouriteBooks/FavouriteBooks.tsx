@@ -1,7 +1,7 @@
 import Book from "../../../../components/Book/Book";
 import s from "./styles.module.scss";
 
-const BooksYouRead = () => {
+const FavouriteBooks = () => {
   return (
     <div className={s.container}>
       <h2>Your favourite</h2>
@@ -14,4 +14,4 @@ const BooksYouRead = () => {
   );
 };
 
-export default BooksYouRead;
+export default FavouriteBooks;
