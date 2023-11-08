@@ -12,7 +12,7 @@ interface TSuggestionList {
   c: string;
 }
 const SuggestionList = ({ c }: TSuggestionList) => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<[]>([]);
   const notification = useNotification();
   useEffect(() => {
     const fetchBooks = async () => {

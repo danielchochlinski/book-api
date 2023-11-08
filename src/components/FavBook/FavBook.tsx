@@ -36,7 +36,7 @@ const backgrounds = [
 
 const FavBook = ({ bookId }: TFavBook) => {
   const [info, setInfo] = useState<VolumeInfo>();
-  const [id, setId] = useState("");
+  const [id, setId] = useState<string>("");
   const favCtx = useContext(FavouriteContext);
   const fetchData = async () => {
     try {

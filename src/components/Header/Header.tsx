@@ -19,6 +19,7 @@ const Header: React.FC = () => {
 
   const [searchType, setSearchType] = useState<string>("intitle");
   const [input, setInput] = useState<string>("");
+
   const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const fetchData = async (startIndex: number) => {

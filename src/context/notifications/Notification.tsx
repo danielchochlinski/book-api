@@ -7,8 +7,8 @@ interface NotificationProps {
   dispatch: React.Dispatch<ActionType>;
 }
 const Notification = (props: NotificationProps) => {
-  const [exit, setExit] = useState(false);
-  const [width, setWidth] = useState(0);
+  const [exit, setExit] = useState<boolean>(false);
+  const [width, setWidth] = useState<number>(0);
   const [intervalID, setIntervalID] = useState<NodeJS.Timer>();
 
   const handleStartTimer = () => {
