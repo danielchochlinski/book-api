@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   const [searchType, setSearchType] = useState<string>("intitle");
   const [input, setInput] = useState<string>("");
 
-  const [isTyping, setIsTyping] = useState<boolean>(false);
+  // const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const fetchData = async (startIndex: number) => {
     if (input.length === 0) return;
@@ -52,19 +52,19 @@ const Header: React.FC = () => {
   const debouncedFetchData = debounce(fetchData, 2000);
 
   useEffect(() => {
-    if (isTyping) {
+    if (booksCtx.isTyping) {
       debouncedFetchData(booksCtx.pagination);
     }
-  }, [isTyping === true, booksCtx.pagination]);
+  }, [booksCtx.isTyping === true, booksCtx.pagination]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
-    setIsTyping(true);
+    booksCtx.setIsTyping(true);
 
     clearTimeout(typingTimer);
 
     typingTimer = setTimeout(() => {
-      setIsTyping(false);
+      booksCtx.setIsTyping(false);
     }, 2000);
   };
 
