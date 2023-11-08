@@ -26,7 +26,7 @@ const SearchedBooks = () => {
     <div className={`${s.container} ${showBooks ? s.hide : s.show}`}>
       {booksCtx.books.map((el: any) => (
         <Book
-          key={el.volumeInfo?.title}
+          key={el.volumeInfo?.title + "search book"}
           name={el.volumeInfo?.title}
           thumb={el.volumeInfo.imageLinks?.smallThumbnail || ""}
           authors={el.volumeInfo.authors}

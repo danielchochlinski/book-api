@@ -49,7 +49,7 @@ const SuggestionList = ({ c }: TSuggestionList) => {
       <div className={s.list}>
         {books?.map((el: GoogleBookItem) => (
           <Book
-            key={el.volumeInfo?.title}
+            key={el.volumeInfo?.title + "sug list"}
             name={el.volumeInfo?.title}
             thumb={el.volumeInfo.imageLinks?.smallThumbnail || ""}
             authors={el.volumeInfo.authors}

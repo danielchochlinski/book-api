@@ -29,7 +29,7 @@ const NotificationProvider = (props: NotificationProviderProps) => {
     <NotificationContext.Provider value={dispatch}>
       <div className={"notification_wrapper"}>
         {state.map((note: StateType) => {
-          return <Notification dispatch={dispatch} key={note.id} {...note} />;
+          return <Notification dispatch={dispatch} key={note.id + "note"} {...note} />;
         })}
       </div>
       {props.children}

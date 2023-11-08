@@ -26,6 +26,7 @@ const Header: React.FC = () => {
     if (input.length === 0) return;
     try {
       booksCtx.setBooksContext([]);
+      booksCtx.setLoading(true);
       const response = await axios.get(
         "https://www.googleapis.com/books/v1/volumes",
         {
@@ -40,6 +41,7 @@ const Header: React.FC = () => {
       );
       console.log(booksCtx.pagination);
       booksCtx.setBooksContext(response.data.items);
+      booksCtx.setLoading(false);
     } catch (err) {
       notification({
         id: uniqueID(),
@@ -76,7 +78,7 @@ const Header: React.FC = () => {
         placeholder="Please query your search"
         className={s.input}
         onChange={handleInputChange}
-        value={input}
+        value={!booksCtx.loading ? input : "Loading"}
         startDecorator={
           {
             title: "Title",
