@@ -5,7 +5,7 @@ import Input from "@mui/joy/Input";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import axios from "axios";
-import { debounce } from "../../utils/helpers/debounce";
+import { debounce } from "../../utils/helpers/fn";
 import BooksContext from "../../context/BooksContext";
 import {
   uniqueID,
@@ -39,7 +39,6 @@ const Header: React.FC = () => {
           },
         }
       );
-      console.log(booksCtx.pagination);
       booksCtx.setBooksContext(response.data.items);
       booksCtx.setLoading(false);
     } catch (err) {
@@ -48,7 +47,7 @@ const Header: React.FC = () => {
         type: "ERROR",
         message: "UPS something went wrong",
       });
-      console.log(err);
+      console.error(err);
     }
   };
   const debouncedFetchData = debounce(fetchData, 2000);
