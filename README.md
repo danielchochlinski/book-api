@@ -1,4 +1,4 @@
-# My Vue App
+# Book-api
 
 ## Overview
 
@@ -35,7 +35,7 @@ To set up the project locally, follow these steps:
    \```
 2. Navigate to the project directory:
    \```bash
-   cd my-vue-app
+   cd book-api
    \```
 3. Install dependencies:
    \```bash
