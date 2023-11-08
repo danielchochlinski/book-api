@@ -12,7 +12,7 @@ const Notification = (props: NotificationProps) => {
   const [intervalID, setIntervalID] = useState<NodeJS.Timer>();
 
   const handleStartTimer = () => {
-    const id: NodeJS.Timer = setInterval(() => {
+    const id: any = setInterval(() => {
       setWidth((prev) => {
         if (prev < 100) {
           return prev + 0.5;
@@ -26,7 +26,7 @@ const Notification = (props: NotificationProps) => {
   };
 
   const handlePauseTimer = useCallback(() => {
-    clearInterval(intervalID as NodeJS.Timer);
+    clearInterval(intervalID as any);
   }, [intervalID]);
 
   const handleCloseNotification = useCallback(() => {
