@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import s from "./FavBook.module.scss";
 import axios from "axios";
 import VolumeInfo from "../../types/types";
@@ -55,12 +55,12 @@ const FavBook = ({ bookId }: TFavBook) => {
     fetchData();
   }, []);
 
-  const randomBackground =
-    backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  const randomBackground = useMemo(() => {
+    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  }, []);
 
   const handleFavourite = (e: { stopPropagation: () => void }) => {
     favCtx.removeFavouriteContext(id);
-
     e.stopPropagation();
   };
   return (

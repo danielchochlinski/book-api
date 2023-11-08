@@ -7,15 +7,21 @@ import Option from "@mui/joy/Option";
 import axios from "axios";
 import { debounce } from "../../utils/helpers/debounce";
 import BooksContext from "../../context/BooksContext";
+import {
+  uniqueID,
+  useNotification,
+} from "../../context/notifications/NotificationProvider";
 const apiKey = import.meta.env.VITE_REACT_APP_BOOK_API_KEY;
 
 const Header: React.FC = () => {
   const booksCtx = useContext(BooksContext);
-  const [searchType, setSearchType] = useState("intitle");
-  const [input, setInput] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
+  const notification = useNotification();
 
-  const fetchData = async () => {
+  const [searchType, setSearchType] = useState<string>("intitle");
+  const [input, setInput] = useState<string>("");
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+
+  const fetchData = async (startIndex: number) => {
     if (input.length === 0) return;
     try {
       booksCtx.setBooksContext([]);
@@ -27,22 +33,28 @@ const Header: React.FC = () => {
             key: apiKey,
             country: "US",
             maxResults: 6,
+            startIndex,
           },
         }
       );
+      console.log(booksCtx.pagination);
       booksCtx.setBooksContext(response.data.items);
     } catch (err) {
+      notification({
+        id: uniqueID(),
+        type: "ERROR",
+        message: "UPS something went wrong",
+      });
       console.log(err);
     }
   };
-
-  const debouncedFetchData = debounce(fetchData, 2000); // Debounce for 2 seconds
+  const debouncedFetchData = debounce(fetchData, 2000);
 
   useEffect(() => {
     if (isTyping) {
-      debouncedFetchData();
+      debouncedFetchData(booksCtx.pagination);
     }
-  }, [isTyping === true]);
+  }, [isTyping === true, booksCtx.pagination]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
