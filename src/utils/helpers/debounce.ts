@@ -1,4 +1,4 @@
-const debounce = <F extends (...args: any[]) => void>(
+export const debounce = <F extends (...args: any[]) => void>(
   func: F,
   delay: number
 ) => {
@@ -11,4 +11,10 @@ const debounce = <F extends (...args: any[]) => void>(
   };
 };
 
-export default debounce;
+export const shortenFunction = (author: string) => {
+  const maxLength = 10;
+  if (author.length <= maxLength) {
+    return author;
+  }
+  return author.slice(0, maxLength) + "...";
+};

@@ -46,7 +46,7 @@ const SuggestionList = ({ c }: TSuggestionList) => {
             thumb={el.volumeInfo.imageLinks?.smallThumbnail || ""}
             authors={el.volumeInfo.authors}
             cat={el.volumeInfo.categories || [""]}
-            id={el.volumeInfo.id}
+            id={el.id}
           />
         ))}
       </div>

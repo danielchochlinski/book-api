@@ -5,7 +5,7 @@ import Input from "@mui/joy/Input";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import axios from "axios";
-import debounce from "../../utils/helpers/debounce";
+import { debounce } from "../../utils/helpers/debounce";
 const apiKey = import.meta.env.VITE_REACT_APP_BOOK_API_KEY;
 
 const Header = () => {
