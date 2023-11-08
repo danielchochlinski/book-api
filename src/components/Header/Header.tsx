@@ -1,4 +1,4 @@
-import { SetStateAction, useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import s from "./Header.module.scss";
 import Divider from "@mui/joy/Divider";
 import Input from "@mui/joy/Input";
@@ -6,44 +6,56 @@ import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import axios from "axios";
 import { debounce } from "../../utils/helpers/debounce";
+import BooksContext from "../../context/BooksContext";
 const apiKey = import.meta.env.VITE_REACT_APP_BOOK_API_KEY;
 
-const Header = () => {
+const Header: React.FC = () => {
+  const booksCtx = useContext(BooksContext);
   const [searchType, setSearchType] = useState("intitle");
   const [input, setInput] = useState("");
-  const [, setSearchResults] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const fetchData = async () => {
+    if (input.length === 0) return;
+    try {
+      booksCtx.setBooksContext([]);
+      const response = await axios.get(
+        "https://www.googleapis.com/books/v1/volumes",
+        {
+          params: {
+            q: `${searchType}:${input}`,
+            key: apiKey,
+            country: "US",
+            maxResults: 6,
+          },
+        }
+      );
+      booksCtx.setBooksContext(response.data.items);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const debouncedFetchData = debounce(fetchData, 2000); // Debounce for 2 seconds
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://www.googleapis.com/books/v1/volumes",
-          {
-            params: {
-              q: `${searchType}:${input}`,
-              key: apiKey,
-              country: "US",
-            },
-          }
-        );
-        console.log(response);
-        setSearchResults(response.data.items);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    if (isTyping) {
+      debouncedFetchData();
+    }
+  }, [isTyping === true]);
 
-    //limit amount of API calls
-    const debouncedFetchData = debounce(fetchData, 4000);
-
-    debouncedFetchData();
-  }, [searchType, input]);
-
-  const handleInputChange = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
+    setIsTyping(true);
+
+    clearTimeout(typingTimer);
+
+    typingTimer = setTimeout(() => {
+      setIsTyping(false);
+    }, 2000);
   };
+
+  let typingTimer: NodeJS.Timeout;
 
   return (
     <div className={s.container}>
@@ -51,7 +63,6 @@ const Header = () => {
         placeholder="Please query your search"
         className={s.input}
         onChange={handleInputChange}
-        sx={{ width: 300 }}
         value={input}
         startDecorator={
           {
@@ -81,9 +92,9 @@ const Header = () => {
         }
       />
 
-      <div className={s.img_container}>
+      {/* <div className={s.img_container}>
         <img src="/profile.png" alt="" />
-      </div>
+      </div> */}
     </div>
   );
 };

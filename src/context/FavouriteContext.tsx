@@ -33,7 +33,6 @@ export const FavouriteContextProvider = ({ children }: TFavouriteContext) => {
   };
 
   const addFavouriteContext = (status: string) => {
-    console.log(status);
     setFavouriteList([...favouriteList, status]);
     setHighlightFavourite(true);
 

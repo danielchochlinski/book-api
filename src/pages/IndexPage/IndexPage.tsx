@@ -2,6 +2,7 @@ import { useState } from "react";
 import SuggestionList from "./components/SuggestionList/SuggestionList";
 import { bookCategories } from "./helper";
 import FavouriteBooks from "./components/FavouriteBooks/FavouriteBooks";
+import SearchedBooks from "./components/SearchedBooks/SearchedBooks";
 const IndexPage = () => {
   const getRandomCategory = (usedCategories: any[]) => {
     const unusedCategories = bookCategories.filter(
@@ -20,6 +21,7 @@ const IndexPage = () => {
 
   return (
     <>
+      <SearchedBooks />
       <FavouriteBooks />
       {randomCategories?.map((category, index) => (
         <SuggestionList key={index} c={category} />

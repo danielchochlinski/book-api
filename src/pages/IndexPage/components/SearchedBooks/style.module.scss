@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 50px;
+  transition: 0.3s ease-in-out;
+  max-height: 300px;
+  overflow-y: scroll;
+  &.hide {
+    height: 0%;
+  }
+  &.show {
+    height: 100%;
+  }
+}

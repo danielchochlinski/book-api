@@ -11,7 +11,7 @@ const SuggestionList = ({ c }: TSuggestionList) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const fetchPopularBooks = async () => {
+    const fetchBooks = async () => {
       try {
         const response = await axios.get(
           "https://www.googleapis.com/books/v1/volumes",
@@ -31,12 +31,11 @@ const SuggestionList = ({ c }: TSuggestionList) => {
       }
     };
 
-    fetchPopularBooks();
+    fetchBooks();
   }, []);
-  console.log(books);
   return (
     <div className={s.container}>
-      <h4>{c.toUpperCase()}</h4>
+      <h3>{c.toUpperCase()}</h3>
 
       <div className={s.list}>
         {books?.map((el: GoogleBookItem) => (
