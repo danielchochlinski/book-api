@@ -18,3 +18,5 @@ export const shortenFunction = (author: string) => {
   }
   return author.slice(0, maxLength) + "...";
 };
+
+export const prod_url = "https://www.googleapis.com/books/v1/volumes";

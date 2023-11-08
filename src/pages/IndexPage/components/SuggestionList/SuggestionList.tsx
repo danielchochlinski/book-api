@@ -7,6 +7,7 @@ import {
   uniqueID,
   useNotification,
 } from "../../../../context/notifications/NotificationProvider";
+import { prod_url } from "../../../../utils/helpers/helper";
 const apiKey = import.meta.env.VITE_REACT_APP_BOOK_API_KEY;
 interface TSuggestionList {
   c: string;
@@ -17,17 +18,14 @@ const SuggestionList = ({ c }: TSuggestionList) => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(
-          "https://www.googleapis.com/books/v1/volumes",
-          {
-            params: {
-              q: `subject:${c}`,
-              maxResults: 6,
-              key: apiKey,
-              country: "US",
-            },
-          }
-        );
+        const response = await axios.get(prod_url, {
+          params: {
+            q: `subject:${c}`,
+            maxResults: 6,
+            key: apiKey,
+            country: "US",
+          },
+        });
 
         setBooks(response.data.items);
       } catch (error) {

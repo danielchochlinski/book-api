@@ -2,7 +2,7 @@ import { useEffect, useState, useContext, useMemo } from "react";
 import s from "./FavBook.module.scss";
 import axios from "axios";
 import VolumeInfo from "../../types/types";
-import { shortenFunction } from "../../utils/helpers/fn";
+import { prod_url, shortenFunction } from "../../utils/helpers/helper";
 import { Tooltip } from "@mui/joy";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavouriteContext from "../../context/FavouriteContext";
@@ -40,9 +40,7 @@ const FavBook = ({ bookId }: TFavBook) => {
   const favCtx = useContext(FavouriteContext);
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes/${bookId}`
-      );
+      const response = await axios.get(`${prod_url}/${bookId}`);
 
       setInfo(response.data.volumeInfo);
       setId(response.data.id);

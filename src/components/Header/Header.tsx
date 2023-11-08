@@ -5,7 +5,7 @@ import Input from "@mui/joy/Input";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import axios from "axios";
-import { debounce } from "../../utils/helpers/fn";
+import { debounce, prod_url } from "../../utils/helpers/helper";
 import BooksContext from "../../context/BooksContext";
 import {
   uniqueID,
@@ -27,18 +27,15 @@ const Header: React.FC = () => {
     try {
       booksCtx.setBooksContext([]);
       booksCtx.setLoading(true);
-      const response = await axios.get(
-        "https://www.googleapis.com/books/v1/volumes",
-        {
-          params: {
-            q: `${searchType}:${input}`,
-            key: apiKey,
-            country: "US",
-            maxResults: 6,
-            startIndex,
-          },
-        }
-      );
+      const response = await axios.get(prod_url, {
+        params: {
+          q: `${searchType}:${input}`,
+          key: apiKey,
+          country: "US",
+          maxResults: 6,
+          startIndex,
+        },
+      });
       booksCtx.setBooksContext(response.data.items);
       booksCtx.setLoading(false);
     } catch (err) {

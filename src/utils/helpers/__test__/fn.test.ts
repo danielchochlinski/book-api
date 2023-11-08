@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { shortenFunction, debounce } from "../fn";
+import { shortenFunction, debounce } from "../helper";
 
 describe("shortenFunction", () => {
   it("should return the original string if it is less than or equal to 10 characters", () => {
