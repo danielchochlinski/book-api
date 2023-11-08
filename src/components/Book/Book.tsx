@@ -42,7 +42,7 @@ const Book = ({ name, thumb, authors, cat, id }: IBook) => {
       <span>{name}</span>
       <div>
         {authors?.map((el) => (
-          <Tooltip title={el} key={el}>
+          <Tooltip title={el} key={el + "norbook"}>
             <span>{shortenFunction(el)}</span>
           </Tooltip>
         ))}

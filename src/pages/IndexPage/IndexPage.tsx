@@ -24,7 +24,7 @@ const IndexPage = () => {
       <SearchedBooks />
       <FavouriteBooks />
       {randomCategories?.map((category, index) => (
-        <SuggestionList key={index} c={category} />
+        <SuggestionList key={index + "sug, list"} c={category} />
       ))}
     </>
   );

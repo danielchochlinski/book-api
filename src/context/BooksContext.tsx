@@ -17,6 +17,8 @@ interface BooksContextValue {
   pagination: number;
   isTyping: boolean;
   setIsTyping: (status: boolean) => void;
+  loading: boolean;
+  setLoading: (status: boolean) => void;
 }
 
 const BooksContext = createContext<BooksContextValue>({
@@ -26,10 +28,13 @@ const BooksContext = createContext<BooksContextValue>({
   pagination: 0,
   isTyping: true,
   setIsTyping: () => {},
+  loading: false,
+  setLoading: () => {},
 });
 
 export const BooksContextProvider = ({ children }: TContext) => {
   const [books, setBooks] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [isTyping, setIsTyping] = useState<boolean>(false);
 
@@ -40,7 +45,7 @@ export const BooksContextProvider = ({ children }: TContext) => {
   const [pagination, setPagination] = useState<number>(0);
   const setPaginationContext = (status: number) => {
     setPagination(status);
-    setIsTyping(true)
+    setIsTyping(true);
   };
   return (
     <BooksContext.Provider
@@ -51,6 +56,8 @@ export const BooksContextProvider = ({ children }: TContext) => {
         pagination,
         isTyping,
         setIsTyping,
+        loading,
+        setLoading,
       }}
     >
       <div>{children}</div>
