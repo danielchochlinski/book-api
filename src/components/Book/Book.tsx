@@ -1,5 +1,5 @@
 import s from "./Book.module.scss";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import FavouriteContext from "../../context/FavouriteContext";
 import { shortenFunction } from "../../utils/helpers/debounce";
 import { Tooltip } from "@mui/joy";
@@ -25,7 +25,6 @@ const Book = ({ name, thumb, authors, cat, id }: IBook) => {
   };
 
   const isFavourite = favCtx?.favouriteList?.includes(id);
-
   return (
     <div className={s.container}>
       {isFavourite ? (
@@ -49,6 +48,7 @@ const Book = ({ name, thumb, authors, cat, id }: IBook) => {
           </Tooltip>
         ))}
       </div>
+
       <span>{cat}</span>
     </div>
   );

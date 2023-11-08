@@ -4,7 +4,6 @@ import axios from "axios";
 import VolumeInfo from "../../types/types";
 import { shortenFunction } from "../../utils/helpers/debounce";
 import { Tooltip } from "@mui/joy";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavouriteContext from "../../context/FavouriteContext";
 interface TFavBook {
