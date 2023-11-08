@@ -11,7 +11,6 @@ const SearchedBooks = () => {
   useEffect(() => {
     setShowBooks(booksCtx.books.length === 0 ? true : false);
   }, [booksCtx.books]);
-  console.log(showBooks);
   const handleNextClick = () => {
     booksCtx.setPaginationContext(booksCtx.pagination + 6);
   };

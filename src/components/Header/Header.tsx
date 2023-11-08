@@ -39,7 +39,6 @@ const Header: React.FC = () => {
           },
         }
       );
-      console.log(booksCtx.pagination);
       booksCtx.setBooksContext(response.data.items);
       booksCtx.setLoading(false);
     } catch (err) {
@@ -48,7 +47,7 @@ const Header: React.FC = () => {
         type: "ERROR",
         message: "UPS something went wrong",
       });
-      console.log(err);
+      console.error(err);
     }
   };
   const debouncedFetchData = debounce(fetchData, 2000);
