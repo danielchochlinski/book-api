@@ -20,7 +20,6 @@ const Book = ({ name, thumb, authors, cat, id }: IBook) => {
     favCtx?.favouriteList.includes(id)
       ? favCtx.removeFavouriteContext(id)
       : favCtx.addFavouriteContext(id);
-    console.log(id);
     e.stopPropagation();
   };
 
@@ -39,7 +38,7 @@ const Book = ({ name, thumb, authors, cat, id }: IBook) => {
           onClick={(e) => handleFavourite(e)}
         />
       )}
-      <img src={thumb} alt={thumb} />
+      <img src={thumb || "/nocover.jpeg"} alt={thumb || "Default Alt Text"} />
       <span>{name}</span>
       <div>
         {authors?.map((el) => (

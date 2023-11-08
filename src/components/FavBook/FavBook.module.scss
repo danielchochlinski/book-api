@@ -3,6 +3,7 @@
   display: flex;
   width: 400px;
   height: 300px;
+
   //info div
   > img {
     position: absolute;
@@ -13,7 +14,7 @@
     left: 40px;
   }
   > div {
-    width: 100%;
+    width: 400px;
     height: 140px;
     background-color: red;
     border-radius: 50px;

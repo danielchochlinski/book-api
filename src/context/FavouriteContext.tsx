@@ -27,13 +27,12 @@ export const FavouriteContextProvider = ({ children }: TFavouriteContext) => {
   const [favouriteList, setFavouriteList] = useState<string[]>([]);
 
   //used for highlighting favourite star in the navigation
-  const [highlightFavourite, setHighlightFavourite] = useState(false);
+  const [highlightFavourite, setHighlightFavourite] = useState<boolean>(false);
   const setHighlightFavouriteContext = (status: boolean) => {
     setHighlightFavourite(status);
   };
 
   const addFavouriteContext = (status: string) => {
-    console.log(status);
     setFavouriteList([...favouriteList, status]);
     setHighlightFavourite(true);
 

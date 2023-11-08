@@ -3,15 +3,19 @@ import axios from "axios";
 import Book from "../../../../components/Book/Book";
 import GoogleBookItem from "../../../../types/types";
 import s from "./style.module.scss";
+import {
+  uniqueID,
+  useNotification,
+} from "../../../../context/notifications/NotificationProvider";
 const apiKey = import.meta.env.VITE_REACT_APP_BOOK_API_KEY;
 interface TSuggestionList {
   c: string;
 }
 const SuggestionList = ({ c }: TSuggestionList) => {
-  const [books, setBooks] = useState([]);
-
+  const [books, setBooks] = useState<[]>([]);
+  const notification = useNotification();
   useEffect(() => {
-    const fetchPopularBooks = async () => {
+    const fetchBooks = async () => {
       try {
         const response = await axios.get(
           "https://www.googleapis.com/books/v1/volumes",
@@ -27,16 +31,20 @@ const SuggestionList = ({ c }: TSuggestionList) => {
 
         setBooks(response.data.items);
       } catch (error) {
+        notification({
+          id: uniqueID(),
+          type: "ERROR",
+          message: "UPS something went wrong",
+        });
         console.error("Error fetching popular books:", error);
       }
     };
 
-    fetchPopularBooks();
+    fetchBooks();
   }, []);
-  console.log(books);
   return (
     <div className={s.container}>
-      <h4>{c.toUpperCase()}</h4>
+      <h3>{c.toUpperCase()}</h3>
 
       <div className={s.list}>
         {books?.map((el: GoogleBookItem) => (
