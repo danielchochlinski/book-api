@@ -1,7 +1,7 @@
 import s from "./Book.module.scss";
 import { useContext } from "react";
 import FavouriteContext from "../../context/FavouriteContext";
-import { shortenFunction } from "../../utils/helpers/debounce";
+import { shortenFunction } from "../../utils/helpers/fn";
 import { Tooltip } from "@mui/joy";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";

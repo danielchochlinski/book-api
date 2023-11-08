@@ -2,7 +2,7 @@ import { useEffect, useState, useContext, useMemo } from "react";
 import s from "./FavBook.module.scss";
 import axios from "axios";
 import VolumeInfo from "../../types/types";
-import { shortenFunction } from "../../utils/helpers/debounce";
+import { shortenFunction } from "../../utils/helpers/fn";
 import { Tooltip } from "@mui/joy";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavouriteContext from "../../context/FavouriteContext";
