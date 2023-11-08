@@ -4,6 +4,29 @@
 
 This is "book-api, a dynamic web application built with React.ts and Vite. It integrates with the Google Books API to allow users to search for books, view details, and save their favorite selections.
 
+I choose Vite for educational purposes as I've never worked with it before, and its modern architecture, fast build times, and simplicity make it an ideal platform for learning the latest in front-end development practices.
+
+## Application Architecture
+
+The application is structured to ensure maintainability and a clean separation of concerns. Below is an overview of the key directories and their purpose:
+
+### `src` Directory
+This is the root directory containing all the source code of the application.
+
+#### `context`
+- Located under the `src` directory, it contains the Context API files for global state management.
+
+#### `pages`
+- This directory hosts the individual pages of the application, with each page encapsulating its own logic and components.
+    - **Index Page**
+        - The entry point of the application, containing all necessary components and logic for the homepage.
+        - `components`: A subdirectory for specific components used on the `index page`, promoting better organization and modularity.
+
+#### `main components`
+- A dedicated folder for storing common, reusable components. These components are used across different pages, fostering code reusability and consistency in the UI/UX.
+
+This architectural approach enhances the ease of navigation and understanding of the codebase, particularly for new developers, and aids in the application's maintenance and scalability.
+
 ## Live Demo
 
 You can view a live demo of the application here:
