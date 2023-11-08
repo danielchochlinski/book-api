@@ -22,7 +22,7 @@ This is the root directory containing all the source code of the application.
         - The entry point of the application, containing all necessary components and logic for the homepage.
         - `components`: A subdirectory for specific components used on the `index page`, promoting better organization and modularity.
 
-#### `main components`
+#### `components`
 - A dedicated folder for storing common, reusable components. These components are used across different pages, fostering code reusability and consistency in the UI/UX.
 
 This architectural approach enhances the ease of navigation and understanding of the codebase, particularly for new developers, and aids in the application's maintenance and scalability.
