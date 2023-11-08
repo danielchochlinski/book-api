@@ -1,9 +1,21 @@
 .container {
-  position: fixed;
+  position: sticky;
+  top: 0;
   display: flex;
-  width: calc(100% - 6vw);
+  width: 100%;
   align-items: center;
   gap: 2rem;
+  z-index: 2;
+  &::before {
+    content: "";
+    width: 110%;
+    left: -5%;
+    height: 100px;
+    position: absolute;
+    background-color: #f0f0f0;
+    z-index: -1;
+    border-radius: 20px;
+  }
 
   .input {
     flex: 1;

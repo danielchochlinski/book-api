@@ -14,7 +14,7 @@ const IndexPage = () => {
 
   const [usedCategories] = useState([]);
 
-  const randomCategories = Array.from({ length: 3 }, () =>
+  const randomCategories = Array.from({ length: 2 }, () =>
     getRandomCategory(usedCategories)
   );
 

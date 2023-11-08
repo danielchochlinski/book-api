@@ -1,13 +1,31 @@
 @import url("../../index.scss");
 
-.container {
-  width: 95vw;
-  height: 95vh;
-  border: 2px solid black;
-  border-radius: 5px;
+// .container {
+//   //   width: 95vw;
+//   //   height: 95vh;
+//   //   border: 2px solid black;
+//   //   border-radius: 5px;
+//   //   max-width: 1440px;
+//   //   max-height: 85vh;
+//   background-color: #f6f5f1;
+//   padding: 12px;
+//   > div {
+//     overflow: scroll;
+//   }
+// }
+
+.wrapper {
+  background-color: #f0f0f0;
+
   max-width: 1440px;
-  max-height: 85vh;
-  background-color: #f6f5f1;
-  padding: 12px;
-  overflow: scroll;
+  margin: auto;
+  border-radius: 20px;
+  .container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 20px;
+    height: calc(100vh - 85px);
+    overflow-y: auto;
+    margin: 20px 15px;
+  }
 }

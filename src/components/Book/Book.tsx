@@ -1,7 +1,10 @@
-import Tooltip from "@mui/material/Tooltip";
 import s from "./Book.module.scss";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import FavouriteContext from "../../context/FavouriteContext";
+import { shortenFunction } from "../../utils/helpers/debounce";
+import { Tooltip } from "@mui/joy";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 interface IBook {
   name: string;
   thumb: string;
@@ -10,19 +13,33 @@ interface IBook {
   id: string;
 }
 
-const shortenFunction = (author: string) => {
-  const maxLength = 10;
-  if (author.length <= maxLength) {
-    return author;
-  }
-  return author.slice(0, maxLength) + "...";
-};
-
 const Book = ({ name, thumb, authors, cat, id }: IBook) => {
-  const [, setId] = useState("");
-  console.log(name);
+  const favCtx = useContext(FavouriteContext);
+
+  const handleFavourite = (e: { stopPropagation: () => void }) => {
+    favCtx?.favouriteList.includes(id)
+      ? favCtx.removeFavouriteContext(id)
+      : favCtx.addFavouriteContext(id);
+    console.log(id);
+    e.stopPropagation();
+  };
+
+  const isFavourite = favCtx?.favouriteList?.includes(id);
+
   return (
-    <div className={s.container} onClick={() => setId(id)}>
+    <div className={s.container}>
+      {isFavourite ? (
+        <FavoriteIcon
+          className={s.heart}
+          onClick={(e) => handleFavourite(e)}
+          style={{ color: "#c30065" }}
+        />
+      ) : (
+        <FavoriteBorderIcon
+          className={s.heart}
+          onClick={(e) => handleFavourite(e)}
+        />
+      )}
       <img src={thumb} alt={thumb} />
       <span>{name}</span>
       <div>
