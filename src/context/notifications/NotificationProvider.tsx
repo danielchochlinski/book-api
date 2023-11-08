@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, Dispatch } from "react";
+import { createContext, useContext, useReducer, Dispatch } from "react";
 import Notification from "./Notification";
 import { StateType, ActionType } from "./types";
 
