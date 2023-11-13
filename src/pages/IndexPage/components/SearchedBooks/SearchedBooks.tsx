@@ -9,21 +9,21 @@ const SearchedBooks = () => {
   const [showBooks, setShowBooks] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
   useEffect(() => {
-    setShowBooks(booksCtx.books.length === 0 ? true : false);
-  }, [booksCtx.books]);
+    setShowBooks(booksCtx?.books?.length === 0 ? true : false);
+  }, [booksCtx?.books]);
   const handleNextClick = () => {
-    booksCtx.setPaginationContext(booksCtx.pagination + 6);
+    booksCtx.setPaginationContext(booksCtx?.pagination + 6);
   };
 
   const handlePrevClick = () => {
     if (booksCtx.pagination === 0) {
       setDisabled(true);
     }
-    booksCtx.setPaginationContext(booksCtx.pagination - 6);
+    booksCtx.setPaginationContext(booksCtx?.pagination - 6);
   };
   return (
     <div className={`${s.container} ${showBooks ? s.hide : s.show}`}>
-      {booksCtx.books.map((el: any) => (
+      {booksCtx?.books?.map((el: any) => (
         <Book
           key={el.volumeInfo?.title + "search book"}
           name={el.volumeInfo?.title}
