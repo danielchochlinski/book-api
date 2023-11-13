@@ -30,7 +30,7 @@ This architectural approach enhances the ease of navigation and understanding of
 ## Live Demo
 
 You can view a live demo of the application here:
-[book-api](https://book-idbk54hrg-danielchochlinski.vercel.app/)
+[book-api](https://book-api-hazel.vercel.app)
 
 ## Features
 
